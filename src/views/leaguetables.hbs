@@ -1,0 +1,60 @@
+      <div class="cl-mcont">
+
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+
+<div class="tab-container">
+                <ul class="nav nav-tabs">
+{{#with _embedded}} {{#with rel:leaguetables}} {{#each this}}
+{{#if (eq competition-name ../../../current-competition-name)}}
+                    <li class="active">
+{{else}}
+                    <li>
+{{/if}}                      
+                      <a href="#tab-{{removeSpaces (toLowerCase competition-name)}}" data-toggle="tab">{{competition-name}}</a></li>
+{{/each}}{{/with}}{{/with}}
+                </ul>
+                <div class="tab-content">
+{{#with _embedded}} {{#with rel:leaguetables}} {{#each this}}
+{{#if (eq competition-name ../../../current-competition-name)}}
+                  <div id="tab-{{removeSpaces (toLowerCase competition-name)}}" class="tab-pane active cont">
+{{else}}
+                  <div id="tab-{{removeSpaces (toLowerCase competition-name)}}" class="tab-pane cont">
+{{/if}}
+    <table class="no-border">
+        <thead class="no-border">
+            <tr>
+                <th class="text-right"></th>
+                <th width="30%"></th>
+                <th class="text-right">Played</th>
+                <th class="text-right">Wins</th>
+                <th class="text-right">Draws</th>
+                <th class="text-right">Losses</th>
+                <th class="text-right">Goals</th>
+                <th class="text-right">Points</th>
+            </tr>
+        </thead>
+        <tbody class="no-border-y">
+{{#with _embedded}} {{#with positions}} {{#each this}}
+            <tr>
+                <td align="right">{{position}}</td>
+                {{#with _embedded}} {{#with team}}
+                <td width="30%">{{> teams/teamname}}</td>
+                {{/with}} {{/with}}
+                <td class="text-right">{{played}}</td>
+                <td class="text-right">{{wins}}</td>
+                <td class="text-right">{{draws}}</td>
+                <td class="text-right">{{losses}}</td>
+                <td class="text-right">{{goals-scored}} - {{goals-conceded}} ({{goal-difference}})</td>
+                <td class="text-right">{{points}}</td>
+            </tr>
+{{/each}} {{/with}} {{/with}}
+        </tbody>
+    </table>
+                  </div>
+{{/each}}{{/with}}{{/with}}
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

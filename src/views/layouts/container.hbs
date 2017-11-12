@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/img/favicon.png">
+  <title>two-nil</title>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Raleway:300,200,100" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet" type="text/css">
+  <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <!--if lt IE 9script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    -->
+  <link rel="stylesheet" type="text/css" href="/lib/jquery.nanoscroller/css/nanoscroller.css">
+  <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <a href="/" class="navbar-brand"><span>Two-Nil</span></a>
+      </div>
+      <div class="navbar-collapse collapse">
+{{#with _links}}
+{{#if main}}
+         <ul class="nav navbar-nav">
+{{#each main}}
+
+{{#if (eq href @root._links.self.href)}} 
+            <li class="active">
+{{else}}
+            <li>
+{{/if}}
+                <a href="{{href}}">{{title}}</a>
+            </li>
+{{/each}}
+        </ul>
+{{/if}}
+{{/with}}
+          </ul>
+          <ul class="nav navbar-nav navbar-right user-nav">
+          <li class="dropdown profile_menu">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img alt="Avatar" src="/img/avatar2.jpg"><span>Bouwe</span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Games</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Sign Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="cl-wrapper">
+    <!--Sidebar item function-->
+    <!--Sidebar sub-item function-->
+    <div class="cl-sidebar">
+      <!-- Collapse Toggle -->
+      <div class="cl-toggle"><i class="fa fa-reorder"></i></div>
+
+      <!-- Menu Items -->
+      <div class="cl-navblock">
+{{#with _links}}
+{{#if game}}
+        <ul class="cl-vnavigation">
+{{#each game}}
+{{#if (eq href @root._links.self.href)}} 
+             <li class="active"><a href="{{href}}"><i id="menu-{{removeSpaces (toLowerCase title)}}"></i><span>{{title}}</span></a></li>
+{{else}}
+             <li><a href="{{href}}"><i id="menu-{{removeSpaces (toLowerCase title)}}"></i><span>{{title}}</span></a></li>
+{{/if}}
+{{/each}}
+        </ul>
+{{/if}}
+{{/with}}
+      </div>
+    </div>
+    <div id="pcont" class="container-fluid">
+
+            {{{body}}}
+
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.js"></script>
+  <script type="text/javascript" src="/js/cleanzone.js"></script>
+  <script type="text/javascript" src="/js/twonil.js"></script>
+  <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      //initialize the javascript
+      App.init();
+      TwoNil.init();
+    });
+  </script>
+</body>
+
+</html>

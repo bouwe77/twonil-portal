@@ -1,0 +1,86 @@
+      <div class="cl-mcont">
+
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <div class="block-flat">
+              <div class="header">
+                <h3>Lorem Ipsum</h3>
+              </div>
+
+              <div class="content">
+
+{{#with _embedded}}
+
+{{#with rel:my-team}}
+<div id="my-team" class="myblock">
+<h5>My Team</h5>
+{{name}} (rating {{rating}})
+</div>
+{{/with}} {{!-- rel:my-team --}}
+
+<div id="my-team" class="myblock">
+<h5>This Season</h5>
+{{#with rel:season-team-statistics}}
+{{season-name}}, {{league-name}}, position {{league-position}}<br/>
+League positions history: {{league-positions-history}}<br/>
+League results history: {{league-results-history}}<br/>
+{{/with}}
+
+{{#with rel:current-season}}
+{{#with _forms}}
+{{#with end-season}}
+<form action="{{action}}" method="{{method}}">
+<button type="submit">{{title}}</button>
+</form>
+{{/with}}
+{{/with}} {{!-- _forms --}}
+{{/with}}
+</div>
+
+{{#with rel:next-match-day}}
+<div id="next-match-day" class="myblock">
+<h5>Next match</h5>
+
+{{#if _embedded}}
+{{else}}
+Your team does not play...
+{{/if}}
+
+{{#with _embedded}}
+{{#with next-match}}
+{{#with _embedded}}
+{{#with home-team}}
+{{> teams/teamname}}
+{{/with}}
+ - 
+{{#with away-team}}
+{{> teams/teamname}}
+{{/with}}
+{{/with}} {{!-- _embedded --}}
+<br/>
+{{competition}} {{round}}
+{{/with}} {{!-- next-match --}}
+{{/with}} {{!-- _embedded --}}
+<br/>
+<a href="{{_links.self.href}}">See all matches</a>
+<br/>
+{{#with _forms}}
+{{#with play-match-day}}
+<form action="{{action}}" method="{{method}}">
+<button type="submit">{{title}}</button>
+</form>
+{{/with}}
+{{/with}} {{!-- _forms --}}
+</div>
+{{/with}} {{!-- rel:next-match-day --}}
+
+{{/with}} {{!-- _embedded --}}
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6">
+          </div>
+        </div>
+      </div>

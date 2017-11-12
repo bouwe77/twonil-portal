@@ -1,0 +1,64 @@
+      <div class="page-head">
+        <h2>Games</h2>
+      </div>
+      <div class="cl-mcont">
+
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <div class="block-flat">
+              <div class="header">
+                <h3>Select Existing Game</h3>
+              </div>
+              <div class="content">
+                <div class="list-group">
+
+{{#with _embedded}}
+{{#with rel:games}}
+{{#each this}}
+
+                  <a href="{{_links.self.href}}" class="list-group-item">
+                    <h5 class="list-group-item-heading"><b>{{name}}</b></h5>
+                    <div><i class="fa fa-group"></i> {{my-team}}</div>
+                    <div><i class="fa fa-list-ol"></i> Season x, League y, Position z</div>
+                  </a>
+
+{{/each}}
+{{/with}}
+{{/with}}
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <div class="block-flat">
+              <div class="header">
+                <h3>Start New Game</h3>
+              </div>
+              <div class="content">
+                <form role="form">
+                  <div class="form-group">
+                    <label>Select your team</label>
+                    <select class="form-control">
+                          <optgroup label="League 1">
+                            <option value="">Team 1</option>
+                            <option value="">Team 2</option>
+                          </optgroup>
+                          <optgroup label="League 2">
+                            <option value="">Team 3</option>
+                            <option value="">Team 4</option>
+                            <option value="">etc.</option>
+                          </optgroup>
+                        </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Game name</label>
+                    <input type="text" placeholder="Enter game name (optional)" class="form-control">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Start!</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

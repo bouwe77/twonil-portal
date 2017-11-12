@@ -1,0 +1,6 @@
+{{!-- the manager's team is bold, all other teams are not --}}
+{{#if (eq @root._links.rel:current-team.href _links.self.href)}}
+<b>***{{name}}***</b>
+{{else}}
+{{name}}
+{{/if}}

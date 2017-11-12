@@ -1,0 +1,32 @@
+<h4>Team Matches</h4>
+
+<div id="matches">
+{{#with _embedded}}
+{{#with rel:matches}}
+{{#each this}}
+
+{{date}} {{competition}} {{round}}
+
+{{#with _embedded}}
+{{#with home-team}}
+{{> teams/teamname}}
+{{/with}}
+ - 
+{{#with away-team}}
+{{> teams/teamname}}
+{{/with}}
+{{/with}} {{!-- _embedded --}}
+
+{{#if played}}
+{{home-score}} - {{away-score}}
+{{#if penalties-taken}}
+    ({{home-penalty-score}} - {{away-penalty-score}})
+{{/if}}
+{{/if}}
+
+<br/>
+
+{{/each}}
+{{/with}} {{!-- _rel:matches --}}
+{{/with}} {{!-- _embedded --}}
+</div>
