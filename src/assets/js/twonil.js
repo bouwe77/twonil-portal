@@ -16,3 +16,14 @@ var TwoNil = (function () {
   }
  
 })();
+
+function validateSignIn() {
+var fucker =  document.getElementById('fucker');
+  
+var element = document.createElement("div");
+element.setAttribute("id", "bla");
+element.appendChild(document.createTextNode('hoi'));
+fucker.appendChild(element);
+
+return false;
+}

@@ -17,7 +17,7 @@ describe('HTTP Client', function () {
           var response = {
             headers: headers,
             statusCode: 200,
-            body: '{ "message": "success!" }'
+            body: { message: "success!" }
           };
           resolve(response);
         })

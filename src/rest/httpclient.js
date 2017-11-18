@@ -1,7 +1,10 @@
+//var apiUri = 'https://bouwe:password@localhost:44365';
+var apiUri = 'http://bouwe:password@twonil-api.local';
+
 var get = function (path, requestMethod, callback) {
 
     var options = {
-        uri: 'https://bouwe:password@localhost:44365' + path,
+        uri: apiUri + path,
         method: 'GET',
         strictSSL: false,
         resolveWithFullResponse: true,
@@ -28,7 +31,7 @@ var get = function (path, requestMethod, callback) {
 var post = function (path, requestMethod, callback) {
 
     var options = {
-        uri: 'https://bouwe:password@localhost:44365' + path,
+        uri: apiUri + path,
         method: 'POST',
         strictSSL: false,
         resolveWithFullResponse: true

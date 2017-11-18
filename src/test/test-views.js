@@ -4,8 +4,8 @@ var views = require('../handlebars/views');
 var assert = require('assert');
 var expect = require('chai').expect;
 
-describe('getViewNameByUri', function () {
-    describe('Happy flow', function () {
+describe('Determine view', function () {
+    describe('When the URI is defined', function () {
         it('Returns the expected view name for all defined URIs', function () {
 
             var testcases = [
@@ -30,11 +30,11 @@ describe('getViewNameByUri', function () {
             })
         });
     });
-    describe('Error situations', function () {
-        it('Returns the expected view name for all error situations', function () {
+    describe('When the URI is not defined or invalid', function () {
+        it('Returns the expected view name for URIs that are not defined or not valid', function () {
 
             var testcases = [
-                { uri: 'doesnotexist', expectedView: 'notimplemented' },
+                { uri: 'loremipsum', expectedView: 'notimplemented' },
                 { uri: null, expectedView: 'notimplemented' },
             ];
 
@@ -44,23 +44,22 @@ describe('getViewNameByUri', function () {
             })
         });
     });
-});
+    describe('When an error occurs', function () {
+        it('Returns the expected view name if an error occurs', function () {
 
-describe('getViewNameByError', function () {
-    it('Returns the expected view name for all errors', function () {
+            var testcases = [
+                { error: null, expectedView: 'error' },
+                { error: {}, expectedView: 'error' },
+                { error: { statusCode: 404 }, expectedView: 'notfound' },
+                { error: { statusCode: 401 }, expectedView: 'home' },
+                { error: { statusCode: '' }, expectedView: 'error' },
+                { error: { statusCode: null }, expectedView: 'error' },
+            ];
 
-        var testcases = [
-            { error: null, expectedView: 'error' },
-            { error: {}, expectedView: 'error' },
-            { error: { statusCode: 404 }, expectedView: 'notfound' },
-            { error: { statusCode: 401 }, expectedView: 'home' },
-            { error: { statusCode: '' }, expectedView: 'error' },
-            { error: { statusCode: null }, expectedView: 'error' },
-        ];
-
-        testcases.forEach(function (testcase) {
-            var view = views.getViewByError(testcase.error);
-            expect(view).to.equal(testcase.expectedView);
-        })
+            testcases.forEach(function (testcase) {
+                var view = views.getViewByError(testcase.error);
+                expect(view).to.equal(testcase.expectedView);
+            })
+        });
     });
 });

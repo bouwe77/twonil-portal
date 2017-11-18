@@ -10,6 +10,7 @@ exports.get = function (request, response) {
     try {
         httpclient.get(request.originalUrl, requestHandler, function (error, json) {
             if (error) {
+console.log(error);
                 viewName = views.getViewByError(error);
             }
             else {
@@ -33,6 +34,7 @@ exports.post = function (request, response) {
         httpclient.post(request.originalUrl, requestHandler, function (error, location) {
 
             if (error) {
+console.log(error);
                 viewName = views.getViewByError(error);
                 viewRenderer.render(response, viewName);
             }

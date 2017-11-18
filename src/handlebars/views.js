@@ -21,7 +21,7 @@ var getViewByUri = function (uri) {
 
     var uriAsTemplate = getUriTemplate(uri);
 
-    var result  = views.filter(function(object) { return object.uriTemplate == uriAsTemplate; } );
+    var result  = views.filter(function(object) { return object.uriTemplate.toLocaleUpperCase() == uriAsTemplate.toLocaleUpperCase(); } );
 
     var viewFound = result.length !== 0;
     if (viewFound) {
