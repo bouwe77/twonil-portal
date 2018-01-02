@@ -1,12 +1,15 @@
+var uriTemplateHelper = require('../helpers/uri-templates');
+
 var views = [
     { uriTemplate: '', view: 'home' },
-    { uriTemplate: "games", view: 'games' },
-    { uriTemplate: "games/{id}", view: 'dashboard' },
-    { uriTemplate: "games/{id}/days/{id}/matches", view: 'matches' },
-    { uriTemplate: "games/{id}/teams/{id}/players", view: 'players' },
-    { uriTemplate: "games/{id}/seasons/{id}", view: 'season' },
-    { uriTemplate: "games/{id}/seasons/{id}/leaguetables", view: 'leaguetables' },
-    { uriTemplate: "games/{id}/seasons/{id}/teams/{id}/matches", view: 'teammatches' },
+    { uriTemplate: 'games', view: 'games' },
+    { uriTemplate: 'games/{id}', view: 'dashboard' },
+    { uriTemplate: 'games/{id}/days/{id}/matches', view: 'matches' },
+    { uriTemplate: 'games/{id}/teams/{id}/players', view: 'players' },
+    { uriTemplate: 'games/{id}/teams/{id}', view: 'team' },
+    { uriTemplate: 'games/{id}/seasons/{id}', view: 'season' },
+    { uriTemplate: 'games/{id}/seasons/{id}/leaguetables', view: 'leaguetables' },
+    { uriTemplate: 'games/{id}/seasons/{id}/teams/{id}/matches', view: 'teammatches' },
 ];
 
 var getViewByUri = function (uri) {
@@ -19,7 +22,7 @@ var getViewByUri = function (uri) {
         return view;
     }
 
-    var uriAsTemplate = getUriTemplate(uri);
+    var uriAsTemplate = uriTemplateHelper.getUriTemplate(uri);
 
     var result  = views.filter(function(object) { return object.uriTemplate.toLocaleUpperCase() == uriAsTemplate.toLocaleUpperCase(); } );
 
@@ -29,27 +32,6 @@ var getViewByUri = function (uri) {
     }
 
     return view;
-}
-
-function getUriTemplate(uri) {
-
-    var uriSegments = uri.split('/').filter(function(el) { return el.length !== 0 });
-
-    var uriTemplate = '';
-    for (var i = 0; i < uriSegments.length; i++) {
-        if (i % 2 === 0) {
-            uriTemplate += uriSegments[i];
-        }
-        else {
-            uriTemplate += '{id}';
-        }
-
-        if (i != uriSegments.length - 1) {
-            uriTemplate += '/';
-        }
-    }
-
-    return uriTemplate;
 }
 
 var getViewByError = function (error) {

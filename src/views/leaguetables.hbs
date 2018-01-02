@@ -26,12 +26,14 @@
             <tr>
                 <th class="text-right"></th>
                 <th width="30%"></th>
-                <th class="text-right">Played</th>
-                <th class="text-right">Wins</th>
-                <th class="text-right">Draws</th>
-                <th class="text-right">Losses</th>
-                <th class="text-right">Goals</th>
-                <th class="text-right">Points</th>
+                <th class="text-right">Pld</th>
+                <th class="text-right">Won</th>
+                <th class="text-right">Drwn</th>
+                <th class="text-right">Lst</th>
+                <th class="text-right">For</th>
+                <th class="text-right">Ag</th>
+                <th class="text-right">Diff</th>
+                <th class="text-right">Pts</th>
             </tr>
         </thead>
         <tbody class="no-border-y">
@@ -39,13 +41,15 @@
             <tr>
                 <td align="right">{{position}}</td>
                 {{#with _embedded}} {{#with team}}
-                <td width="30%">{{> teams/teamname}}</td>
+                <td width="30%" class="secret-link">{{> teams/teamname}}</td>
                 {{/with}} {{/with}}
                 <td class="text-right">{{played}}</td>
                 <td class="text-right">{{wins}}</td>
                 <td class="text-right">{{draws}}</td>
                 <td class="text-right">{{losses}}</td>
-                <td class="text-right">{{goals-scored}} - {{goals-conceded}} ({{goal-difference}})</td>
+                <td class="text-right">{{goals-scored}}</td>
+                <td class="text-right">{{goals-conceded}}</td>
+                <td class="text-right">{{goal-difference}}</td>
                 <td class="text-right">{{points}}</td>
             </tr>
 {{/each}} {{/with}} {{/with}}

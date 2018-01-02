@@ -1,6 +1,68 @@
-<h4>Season</h4>
+<div class="cl-mcont">
 
+{{#with _embedded}}
+    {{#with rel:season}}
 
-<div id="season">
-TODO...
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            
+            <div class="block-flat">
+                <div class="header">
+                    <h3>{{name}}</h3>
+                </div>
+            </div>
+            
+            <div class="block-flat">
+                <div class="content no-padding">
+                    <div class="overflow-hidden">
+                        <i class="fa fa-trophy fa-4x pull-left color-primary"></i>
+                        <h3 class="no-margin">CHAMPION</h3>
+        {{#with _embedded}}
+            {{#with national-champion-runnerup}}
+                        <p class="color-primary">Runner-Up: {{name}}</p>
+            {{/with}}
+            {{#with national-champion}}
+                        <h1 class="no-margin big-text">{{name}}</h1>
+            {{/with}}
+            {{#unless national-champion}}
+                        <h1 class="no-margin big-text">n/a</h1>
+            {{/unless}}
+        {{/with}}
+        {{#unless _embedded}}
+                        <h1 class="no-margin big-text">n/a</h1>
+        {{/unless}}
+                    </div>
+                </div>
+            </div>
+            <div class="block-flat">
+                <div class="content no-padding">
+                    <div class="overflow-hidden">
+                        <i class="fa fa-child fa-4x pull-left color-primary"></i>
+                        <h3 class="no-margin">CUP WINNER</h3>
+        {{#with _embedded}}
+            {{#with national-cup-runnerup}}
+                        <p class="color-primary">Runner-Up: {{name}}</p>
+            {{/with}}
+            {{#with national-cup-winner}}
+                        <h1 class="no-margin big-text">{{name}}</h1>
+            {{/with}}
+            {{#unless national-cup-winner}}
+                        <h1 class="no-margin big-text">n/a</h1>
+            {{/unless}}
+        {{/with}}
+        {{#unless _embedded}}
+                        <h1 class="no-margin big-text">n/a</h1>
+        {{/unless}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-6 col-md-6">
+        </div>
+    </div>
+
+    {{/with}}
+{{/with}}
+
 </div>

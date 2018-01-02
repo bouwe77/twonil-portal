@@ -1,0 +1,79 @@
+<div class="cl-mcont">
+
+    {{#with _embedded}}
+    <div class="row">
+        <div class="col-sm-7">
+            {{#with teams}}
+            {{#each this}}
+            {{name}} {{league-name}}<br/>
+            {{/each}}
+            {{/with}}
+
+            {{#with rel:team}}
+            <div class="block-flat">
+                <div class="header">
+                    <h3>{{name}}</h3>
+                </div>
+                <div class="content">
+                    <div class="progress">
+                        <div style="width: {{rating-percentage}}%" class="progress-bar progress-bar-success">{{rating}}</div>
+                    </div>
+                </div>
+            </div>
+            {{/with}}
+        </div>
+        <div class="col-sm-5">
+
+            <div class="block-flat">
+                <div class="header">
+                    <h3>Other Teams</h3>
+                </div>
+                <div class="content">
+                    <form action="#" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <select class="select2">
+                                    <optgroup label="Alaskan/Hawaiian Time Zone">
+                                        <option value="AK">Alaska</option>
+                                        <option value="HI">Hawaii</option>
+                                    </optgroup>
+                                    <optgroup label="Pacific Time Zone">
+                                        <option selected="selected" value="CA">California</option>
+                                        <option value="NV">Nevada</option>
+                                    </optgroup>
+                                    <optgroup label="Mountain Time Zone">
+                                        <option value="AZ">Arizona</option>
+                                        <option value="CO">Colorado</option>
+                                    </optgroup>
+                                    <optgroup label="Central Time Zone">
+                                        <option value="AL">Alabama</option>
+                                        <option value="AR">Arkansas</option>
+                                    </optgroup>
+                                    <optgroup label="Eastern Time Zone">
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="WV">West Virginia</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            {{#with rel:season-team-statistics}}
+            <div class="block-flat">
+                <div class="content no-padding">
+                    <div class="overflow-hidden">
+                        <i class="fa fa-list-alt fa-4x pull-left color-primary"></i>
+                        <h3 class="no-margin">{{toUpperCase league-name}}</h3>
+                        <p class="color-primary">Position</p>
+                    </div>
+                    <h1 class="no-margin big-text" align="center">{{league-position}}</h1>
+                </div>
+            </div>
+            {{/with}}
+        </div>
+    </div>
+    {{/with}}
+</div>

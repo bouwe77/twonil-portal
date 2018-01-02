@@ -1,4 +1,4 @@
-var viewRenderer = require('./views.js');
+var viewRenderer = require('./view-renderer');
 
 exports.getRegister = function (request, response) {
     viewRenderer.render(response, 'register');

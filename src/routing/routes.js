@@ -1,7 +1,7 @@
 module.exports = function (app) {
 
-    var apiController = require('../controllers/apiController.js');
-    var userController = require('../controllers/userController.js');
+    var apiController = require('../controllers/api-controller');
+    var userController = require('../controllers/user-controller');
 
     app.route('/register')
         .get(userController.getRegister)

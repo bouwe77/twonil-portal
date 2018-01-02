@@ -1,6 +1,6 @@
 {{!-- the manager's team is bold, all other teams are not --}}
-{{#if (eq @root._links.rel:current-team.href _links.self.href)}}
-<b>***{{name}}***</b>
+{{#if (eq @root._links.rel:managers-team.href _links.self.href)}}
+<a href="{{_links.self.href}}"><b>{{name}}</b></a>
 {{else}}
-{{name}}
+<a href="{{_links.self.href}}">{{name}}</a>
 {{/if}}

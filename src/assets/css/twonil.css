@@ -1,0 +1,7 @@
+.secret-link a {
+    color: #555;
+}
+.secret-link a:hover {
+    color: #555;
+    text-decoration: underline;
+}

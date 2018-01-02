@@ -8,7 +8,7 @@ var path = require('path');
 app.use(express.static(path.join(__dirname + '/assets')));
 
 // Register the routes.
-var routes = require('./routing/routes.js');
+var routes = require('./routing/routes');
 routes(app);
 
 // Register body-parser for handling form url encoded requests.

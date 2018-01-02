@@ -1,47 +1,50 @@
-<h4>Matches</h4>
+<div class="cl-mcont">
 
-<div id="matches">
-
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+{{#with _embedded}} {{#with rel:matches-per-competition}} {{#each this}}
+            <div class="block-flat">
+                <div class="header">
+                    <h3>{{competition-name}} {{round-name}}</h3>
+                </div>
+                <div class="content">
+                    <table class="no-border">
+                        <tbody class="no-border-y">
 {{#with _embedded}}
-{{#with rel:matches-per-competition}}
-{{#each this}}
-<h5>{{competition-name}} {{round-name}}</h5>
-
-{{#with _embedded}}
-{{#with rel:matches}}
-{{#each this}}
-
-{{#with _embedded}}
-{{#with home-team}}
-{{> teams/teamname}}
-{{/with}}
- - 
-{{#with away-team}}
-{{> teams/teamname}}
-{{/with}}
-{{/with}} {{!-- _embedded --}}
-
-{{#if played}}
-{{home-score}} - {{away-score}}
-{{#if penalties-taken}}
-    ({{home-penalty-score}} - {{away-penalty-score}})
-{{/if}}
-{{/if}}
-<br/>
+    {{#with rel:matches}}
+        {{#each this}}
+                            <tr>
+            {{#with _embedded}}
+                {{#with home-team}}
+                                <td width="25%" class="text-right"><span class="secret-link">{{> teams/teamname}}</span></td>
+                {{/with}}
+            {{/with}} {{!-- _embedded --}} 
+                                <td width="15%" class="text-center">
+                                    {{#if played}}
+                                        {{home-score}} - {{away-score}}
+                                        {{#if penalties-taken}} 
+                                            ({{home-penalty-score}} - {{away-penalty-score}}) 
+                                        {{/if}} 
+                                    {{else}}
+                                        -
+                                    {{/if}}                                    
+                                </td>
+            {{#with _embedded}}
+                {{#with away-team}}
+                                <td class="text-left"><span class="secret-link">{{> teams/teamname}}</span></td>
+                {{/with}}
+            {{/with}} {{!-- _embedded --}} 
+                            </tr>
+        {{/each}} 
+    {{/with}} 
+{{/with}} 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 {{/each}}
-
-{{/with}}
-{{/with}}
-
-{{#if @first}}
-<hr />
-{{else}}
-<br />
-{{/if}}
-
-{{/each}}
-
 {{/with}} {{!-- _rel:matches-per-competition --}}
 {{/with}} {{!-- _embedded --}}
-
+        </div>
+    </div>
 </div>

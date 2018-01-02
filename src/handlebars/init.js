@@ -34,6 +34,9 @@ var handlebars = expressHandlebars.create({
         toLowerCase: function(str) {
             return str.toLowerCase();
         },
+        toUpperCase: function(str) {
+            return str.toUpperCase();
+        },
         removeSpaces: function(str) {
             return str.replace(/\s+/g, '');
         },

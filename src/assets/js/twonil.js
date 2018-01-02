@@ -13,17 +13,7 @@ var TwoNil = (function () {
     $("#menu-squad").addClass("fa fa-group");
     $("#menu-matches").addClass("fa fa-soccer-ball-o");
     $("#menu-dashboard").addClass("fa fa-home");
+    $("#menu-otherteams").addClass("fa fa-external-link");
   }
  
 })();
-
-function validateSignIn() {
-var fucker =  document.getElementById('fucker');
-  
-var element = document.createElement("div");
-element.setAttribute("id", "bla");
-element.appendChild(document.createTextNode('hoi'));
-fucker.appendChild(element);
-
-return false;
-}

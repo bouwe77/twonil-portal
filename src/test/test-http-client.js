@@ -1,5 +1,5 @@
 // The following .js file is under test here:
-var httpclient = require('../rest/httpclient');
+var httpclient = require('../rest/http-client');
 
 var assert = require('assert');
 var expect = require('chai').expect;

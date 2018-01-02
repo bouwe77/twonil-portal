@@ -1,32 +1,88 @@
-<h4>Team Matches</h4>
+      <div class="cl-mcont">
 
-<div id="matches">
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+              <div class="block-flat">
+                <div class="content">
+                  <table class="no-border">
+                    <thead class="no-border">
+                      <tr>
+                        <th style="width:10%;">Date</th>
+                        <th style="width:30%;">Opponent</th>
+                        <th style="width:10%;">Venue</th>
+                        <th style="width:25%;">Competition</th>
+                        <th>Result</th>
+                      </tr>
+                    </thead>
+                    <tbody class="no-border-y">
+
 {{#with _embedded}}
 {{#with rel:matches}}
 {{#each this}}
-
-{{date}} {{competition}} {{round}}
-
+                        <tr>
+                            <td>{{date}}</td>
+{{!-- Determine which team is the opponent --}}
+{{#if _embedded}}
 {{#with _embedded}}
-{{#with home-team}}
-{{> teams/teamname}}
-{{/with}}
- - 
-{{#with away-team}}
-{{> teams/teamname}}
-{{/with}}
+    {{#with home-team}}
+        {{#if (ne @root._links.rel:matches-of-team.href _links.self.href)}}
+                            <td class="secret-link">{{> teams/teamname}}</td>
+                            <td>Away</td>
+        {{/if}}
+    {{/with}}
+    {{#with away-team}}
+        {{#if (ne @root._links.rel:matches-of-team.href _links.self.href)}}
+                            <td class="secret-link">{{> teams/teamname}}</td>
+                            <td>Home</td>
+        {{/if}}
+    {{/with}}
+
+    {{#unless home-team}}
+        {{#unless away-team}}
+                            {{!-- There is an _embedded section, but no home and away team --}}
+                            <td>-</td>
+                            <td>-</td>
+        {{/unless}}
+    {{/unless}}
+
 {{/with}} {{!-- _embedded --}}
 
+{{else}}
+                            {{!-- There is no _embedded section, therefore also no home and away team --}}
+                            <td>-</td>
+                            <td>-</td>
+{{/if}}
+                            <td>{{competition-name}} {{round}}</td>
+                            <td>
+{{!-- Swap the home and away goals if the team is away team--}}
 {{#if played}}
-{{home-score}} - {{away-score}}
-{{#if penalties-taken}}
-    ({{home-penalty-score}} - {{away-penalty-score}})
+    {{#with _embedded}}
+        {{#with away-team}}
+            {{#if (eq @root._links.rel:matches-of-team.href _links.self.href)}}
+                                {{../../away-score}} - {{../../home-score}}
+                {{#if penalties-taken}}
+                                ({{../../away-penalty-score}} - {{../../home-penalty-score}})
+                {{/if}}
+            {{else}}
+                                {{../../home-score}} - {{../../away-score}}
+                {{#if penalties-taken}}
+                                ({{../../home-penalty-score}} - {{../../away-penalty-score}})
+                {{/if}}
+            {{/if}}
+        {{/with}}
+    {{/with}} {{!-- _embedded --}}
 {{/if}}
-{{/if}}
-
-<br/>
+                            </td>
+                        </tr>
 
 {{/each}}
 {{/with}} {{!-- _rel:matches --}}
 {{/with}} {{!-- _embedded --}}
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+        </div>
+    </div>
 </div>

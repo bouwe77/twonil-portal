@@ -1,7 +1,8 @@
-var httpclient = require('../rest/httpclient');
-var viewRenderer = require('./views.js');
-var views = require('../handlebars/views.js');
+var httpclient = require('../rest/http-client');
+var viewRenderer = require('./view-renderer');
+var views = require('../handlebars/views');
 var requestHandler = require('request-promise');
+var transformer = require('../json-transformers/json-transformer');
 
 exports.get = function (request, response) {
 
@@ -16,6 +17,8 @@ console.log(error);
             else {
                 viewName = views.getViewByUri(request.path);
             }
+
+            json = transformer.transform(request.path, json);
 
             viewRenderer.render(response, viewName, json);
         });
