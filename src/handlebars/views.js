@@ -5,6 +5,7 @@ var views = [
     { uriTemplate: 'games', view: 'games' },
     { uriTemplate: 'games/{id}', view: 'dashboard' },
     { uriTemplate: 'games/{id}/days/{id}/matches', view: 'matches' },
+    { uriTemplate: 'games/{id}/matches/{id}', view: 'matches' },
     { uriTemplate: 'games/{id}/teams/{id}/players', view: 'players' },
     { uriTemplate: 'games/{id}/teams/{id}', view: 'team' },
     { uriTemplate: 'games/{id}/seasons/{id}', view: 'season' },

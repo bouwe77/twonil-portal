@@ -1,15 +1,20 @@
 <div class="cl-mcont">
 
 {{#with _embedded}}
-    {{#with rel:season}}
 
     <div class="row">
         <div class="col-sm-6 col-md-6">
             
             <div class="block-flat">
                 <div class="header">
+                {{#with rel:season}}
                     <h3>{{name}}</h3>
+                {{/with}}
                 </div>
+            </div>
+
+            <div class="block-flat">
+                {{> seasons/seasonselectbox}}
             </div>
             
             <div class="block-flat">
@@ -17,6 +22,7 @@
                     <div class="overflow-hidden">
                         <i class="fa fa-trophy fa-4x pull-left color-primary"></i>
                         <h3 class="no-margin">CHAMPION</h3>
+    {{#with rel:season}}
         {{#with _embedded}}
             {{#with national-champion-runnerup}}
                         <p class="color-primary">Runner-Up: {{name}}</p>
@@ -53,6 +59,7 @@
         {{#unless _embedded}}
                         <h1 class="no-margin big-text">n/a</h1>
         {{/unless}}
+    {{/with}}
                     </div>
                 </div>
             </div>
@@ -62,7 +69,6 @@
         </div>
     </div>
 
-    {{/with}}
 {{/with}}
 
 </div>

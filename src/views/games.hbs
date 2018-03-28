@@ -13,17 +13,15 @@
                 <div class="list-group">
 
 {{#with _embedded}}
-{{#with rel:games}}
-{{#each this}}
-
+  {{#with rel:games}}
+    {{#each this}}
                   <a href="{{_links.self.href}}" class="list-group-item">
                     <h5 class="list-group-item-heading"><b>{{name}}</b></h5>
                     <div><i class="fa fa-group"></i> {{my-team}}</div>
                     <!-- <div><i class="fa fa-list-ol"></i> Season x, League y, Position z</div> -->
                   </a>
-
-{{/each}}
-{{/with}}
+    {{/each}}
+  {{/with}}
 {{/with}}
 
                 </div>

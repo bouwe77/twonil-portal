@@ -1,7 +1,7 @@
-.secret-link a {
+.secret-link {
     color: #555;
 }
-.secret-link a:hover {
+.secret-link:hover {
     color: #555;
     text-decoration: underline;
 }

@@ -1,6 +1,14 @@
 {{!-- the manager's team is bold, all other teams are not --}}
 {{#if (eq @root._links.rel:managers-team.href _links.self.href)}}
-<a href="{{_links.self.href}}"><b>{{name}}</b></a>
+<a href="{{_links.self.href}}" class="secret-link" 
+{{#if league-name}}
+data-placement="right" data-toggle="tooltip" data-original-title="{{league-name}}, position {{current-league-position}}"
+{{/if}}
+><b>{{name}}</b></a>
 {{else}}
-<a href="{{_links.self.href}}">{{name}}</a>
+<a href="{{_links.self.href}}" class="secret-link" 
+{{#if league-name}}
+data-placement="right" data-toggle="tooltip" data-original-title="{{league-name}}, position {{current-league-position}}"
+{{/if}}
+>{{name}}</a>
 {{/if}}

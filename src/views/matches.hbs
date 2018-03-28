@@ -1,8 +1,49 @@
 <div class="cl-mcont">
 
+{{#with _embedded}}
+{{#if rel:match}}
     <div class="row">
         <div class="col-sm-6 col-md-6">
-{{#with _embedded}} {{#with rel:matches-per-competition}} {{#each this}}
+            <div class="block-flat">
+{{#with rel:match}}
+                <div class="content">
+     
+                <table class="no-border">
+                    <tbody class="no-border-x no-border-y">
+                      <tr>
+                        <td class="text-right" width="40%">
+                            <h3>
+                                {{#with _embedded/home-team}}
+                                    {{> teams/teamname}}
+                                {{/with}}
+                            </h3>
+                        </td>
+                        <td class="text-center"><h3>{{home-score}} - {{away-score}}</h3></td>
+                        <td class="text-left" width="40%">
+                            <h3>
+                                {{#with _embedded/away-team}}
+                                    {{> teams/teamname}}
+                                {{/with}}
+                            </h3>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+
+    {{#if penalties-taken}} 
+        ({{home-penalty-score}} - {{away-penalty-score}}) 
+    {{/if}} 
+
+                </div>
+{{/with}}
+            </div>
+        </div>
+    </div>
+{{/if}}
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+{{#with rel:matches-per-competition}} {{#each this}}
             <div class="block-flat">
                 <div class="header">
                     <h3>{{competition-name}} {{round-name}}</h3>
@@ -16,7 +57,7 @@
                             <tr>
             {{#with _embedded}}
                 {{#with home-team}}
-                                <td width="25%" class="text-right"><span class="secret-link">{{> teams/teamname}}</span></td>
+                                <td width="25%" class="text-right">{{> teams/teamname}}</td>
                 {{/with}}
             {{/with}} {{!-- _embedded --}} 
                                 <td width="15%" class="text-center">
@@ -31,7 +72,7 @@
                                 </td>
             {{#with _embedded}}
                 {{#with away-team}}
-                                <td class="text-left"><span class="secret-link">{{> teams/teamname}}</span></td>
+                                <td class="text-left">{{> teams/teamname}}</td>
                 {{/with}}
             {{/with}} {{!-- _embedded --}} 
                             </tr>
@@ -44,7 +85,7 @@
             </div>
 {{/each}}
 {{/with}} {{!-- _rel:matches-per-competition --}}
-{{/with}} {{!-- _embedded --}}
         </div>
     </div>
+{{/with}} {{!-- _embedded --}}
 </div>

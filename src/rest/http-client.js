@@ -1,5 +1,5 @@
-//var apiUri = 'https://bouwe:password@localhost:44365';
-var apiUri = 'http://bouwe:password@twonil-api.local';
+var apiUri = 'http://bouwe:password@localhost:59711';
+//var apiUri = 'http://bouwe:password@twonil-api.local';
 
 var get = function (path, requestMethod, callback) {
 

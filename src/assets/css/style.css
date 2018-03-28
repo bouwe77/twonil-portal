@@ -5573,7 +5573,7 @@ ul.timeline li > .date {
 .list-group.tickets .list-group-item .name {
   margin: 0 0 5px 0;
   font-size: 13px;
-  font-weight: 600;
+/*  font-weight: 600; deze heb ik weggehaald, want bold werkt dan niet...*/
 }
 .list-group.tickets .list-group-item p {
   margin: 0;

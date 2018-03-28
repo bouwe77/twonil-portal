@@ -1,9 +1,16 @@
       <div class="cl-mcont">
 
+{{#with _embedded}}
+
         <div class="row">
           <div class="col-sm-6 col-md-6">
               <div class="block-flat">
                 <div class="content">
+
+                  {{> teams/teamselectbox}}
+
+                  {{> seasons/seasonselectbox}}
+
                   <table class="no-border">
                     <thead class="no-border">
                       <tr>
@@ -16,7 +23,6 @@
                     </thead>
                     <tbody class="no-border-y">
 
-{{#with _embedded}}
 {{#with rel:matches}}
 {{#each this}}
                         <tr>
@@ -26,13 +32,13 @@
 {{#with _embedded}}
     {{#with home-team}}
         {{#if (ne @root._links.rel:matches-of-team.href _links.self.href)}}
-                            <td class="secret-link">{{> teams/teamname}}</td>
+                            <td>{{> teams/teamname}}</td>
                             <td>Away</td>
         {{/if}}
     {{/with}}
     {{#with away-team}}
         {{#if (ne @root._links.rel:matches-of-team.href _links.self.href)}}
-                            <td class="secret-link">{{> teams/teamname}}</td>
+                            <td>{{> teams/teamname}}</td>
                             <td>Home</td>
         {{/if}}
     {{/with}}
@@ -60,12 +66,12 @@
         {{#with away-team}}
             {{#if (eq @root._links.rel:matches-of-team.href _links.self.href)}}
                                 {{../../away-score}} - {{../../home-score}}
-                {{#if penalties-taken}}
+                {{#if ../../penalties-taken}}
                                 ({{../../away-penalty-score}} - {{../../home-penalty-score}})
                 {{/if}}
             {{else}}
                                 {{../../home-score}} - {{../../away-score}}
-                {{#if penalties-taken}}
+                {{#if ../../penalties-taken}}
                                 ({{../../home-penalty-score}} - {{../../away-penalty-score}})
                 {{/if}}
             {{/if}}
@@ -77,7 +83,6 @@
 
 {{/each}}
 {{/with}} {{!-- _rel:matches --}}
-{{/with}} {{!-- _embedded --}}
 
                     </tbody>
                   </table>
@@ -85,4 +90,5 @@
               </div>
         </div>
     </div>
+{{/with}} {{!-- _embedded --}}
 </div>

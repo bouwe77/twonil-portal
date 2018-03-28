@@ -1,11 +1,15 @@
       <div class="cl-mcont">
 
+{{#with _embedded}}
+
         <div class="row">
           <div class="col-sm-6 col-md-6">
 
+                  {{> seasons/seasonselectbox}}
+
 <div class="tab-container">
                 <ul class="nav nav-tabs">
-{{#with _embedded}} {{#with rel:leaguetables}} {{#each this}}
+{{#with rel:leaguetables}} {{#each this}}
 {{#if (eq competition-name ../../../current-competition-name)}}
                     <li class="active">
 {{else}}
@@ -41,7 +45,7 @@
             <tr>
                 <td align="right">{{position}}</td>
                 {{#with _embedded}} {{#with team}}
-                <td width="30%" class="secret-link">{{> teams/teamname}}</td>
+                <td width="30%">{{> teams/teamname}}</td>
                 {{/with}} {{/with}}
                 <td class="text-right">{{played}}</td>
                 <td class="text-right">{{wins}}</td>
@@ -56,9 +60,10 @@
         </tbody>
     </table>
                   </div>
-{{/each}}{{/with}}{{/with}}
+{{/each}}{{/with}}
                 </div>
               </div>
         </div>
     </div>
+{{/with}}
 </div>

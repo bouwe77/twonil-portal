@@ -1,0 +1,22 @@
+<form action="#" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+    <div class="form-group">
+        <select class="select2" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value)">
+        {{#with rel:teams}} {{#each this}}       
+            {{#if league-name}}                             
+                {{#if @first}}
+                {{else}}
+            </optgroup>
+                {{/if}}
+            <optgroup label="{{league-name}}">
+            {{/if}}
+                <option value="{{_links.context.href}}"
+                    {{#if (eq @root._links.self.href _links.context.href)}}
+                    selected
+                    {{/if}}
+                    >{{name}}
+                </option>
+        {{/each}} {{/with}}
+            </optgroup>
+        </select>
+    </div>
+</form>

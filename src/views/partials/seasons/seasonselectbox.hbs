@@ -1,0 +1,18 @@
+<form action="#" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+    <div class="form-group">
+        <!--
+        <label class="col-sm-3 control-label">Basic Select</label>
+        -->
+        <div class="col-sm-6">
+            <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value)">
+        {{#with rel:seasons}} {{#each this}}
+                <option value="{{_links.context.href}}"
+                    {{#if (eq @root._links.self.href _links.context.href)}}
+                    selected
+                    {{/if}}
+                >{{name}}</option>
+        {{/each}}{{/with}}
+            </select>
+        </div>
+    </div>
+</form>
